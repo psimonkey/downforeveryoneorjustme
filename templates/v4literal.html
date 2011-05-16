@@ -1,0 +1,14 @@
+{% extends "index.html" %}
+
+{% block title %}It's {% if not up4 %}not {% endif %}just you.{% endblock %}
+
+{% block content %}
+<!-- V4LITERAL -->
+{% if up4 %}
+<p>It's just you.  <a href="{{ display_url }}" class="url">{{ display_url }}</a> is up.</p>
+{{ upad1 }}
+{% else %}
+<p>It's not just you!  <a href="{{ display_url }}" class="url">{{ display_url }}</a> looks down from here.</p>
+{{ downad1 }}
+{% endif %}
+{% endblock %}

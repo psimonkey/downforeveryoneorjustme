@@ -1,5 +1,5 @@
-application: downforeveryoneorjustme
-version: 1
+application: downforeveryoneorjustmeipv6
+version: 6
 runtime: python
 api_version: 1
 
@@ -8,24 +8,9 @@ handlers:
   static_files: images/favicon.ico
   upload: images/favicon.ico
 
-- url: /stylesheets
-  static_dir: stylesheets
-
-- url: /images
-  static_dir: images
-
-- url: /javascripts
-  static_dir: javascripts
-
 - url: /test.*
   script: gaeunit.py
 
-- url: /_tweetcheck
-  script: tweetcheck.py
-
-- url: /_downerclear
-  script: downerclear.py
-  
 - url: /remote_api
   script: $PYTHON_LIB/google/appengine/ext/remote_api/handler.py
   login: admin

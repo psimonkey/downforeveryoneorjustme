@@ -1,0 +1,27 @@
+{% extends "index.html" %}
+
+{% block content %}
+<!-- HOME -->
+<form id="form" name="form" method="get" action="/q">
+  Is <input id="url" name="url" type="text" placeholder="google.com" autofocus required> down for everyone <input id="submit" name="submit" type="submit" value="or just me?">
+</form>
+<script type="text/javascript">
+  document.getElementById("form").onsubmit = function () {
+    url = document.getElementById('url').value;
+    if (url != '') window.location = '/' + url;
+    return false;
+  }
+  i = document.getElementById("url");
+  if (!("placeholder" in i)) {
+    i.value = 'google.com';
+    i.style.color = '#ccc';
+    i.onclick = function() {
+      if (!(i.cleared)) {
+        i.cleared = true;
+        i.value = '';
+        i.style.color = '#000';
+      }
+    }
+  }
+</script>
+{% endblock %}

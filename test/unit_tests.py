@@ -1,18 +1,21 @@
 import logging, unittest
-from main import Url
+from main import CheckUrlGAE
 
-class UrlTest(unittest.TestCase):
-  def test_sane_domain(self):
-    url = Url('google.com')
-    self.assertEqual('google.com', url.original_domain)
-    self.assertEqual('http://google.com', url.domain)
+class CheckUrlTest(unittest.TestCase):
+  def test_sane_url(self):
+    cd = CheckUrlGAE()
+    cd.result = {}
+    cd.get_hostname('google.com')
+    self.assertEqual('google.com', cd.hostname)
     
-  def test_domain_with_http(self):
-    url = Url('http://google.com')
-    self.assertEqual('http://google.com', url.original_domain)
-    self.assertEqual('http://google.com', url.domain)
+  def test_url_with_http(self):
+    cd = CheckUrlGAE()
+    cd.result = {}
+    cd.get_hostname('http://google.com')
+    self.assertEqual('google.com', cd.hostname)
 
-  def test_domain_with_http_encoded(self):
-    url = Url('http%3A//google.com')
-    self.assertEqual('google.com', url.original_domain)
-    self.assertEqual('http://google.com', url.domain)
+  def test_url_with_http_encoded(self):
+    cd = CheckUrlGAE()
+    cd.result = {}
+    cd.get_hostname('http%3A//google.com')
+    self.assertEqual('google.com', cd.hostname)
