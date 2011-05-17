@@ -32,10 +32,8 @@ class CheckUrlGAE(webapp.RequestHandler, CheckUrl):
           'display_url': self.display_url,
           'up4': self.up4,
           'up6': self.up6,
-          'upad1': '',
-          'downad1': '',
-          #'upad1': '<p>We Guarantee Our Uptime! Switch to <a href="http://gk.site5.com/t/83/1" class="adlink">Site5 Web Hosting</a>!</p>',
-          #'downad1': '<p>Tired Of Downtime? Switch to <a href="http://gk.site5.com/t/83/2" class="adlink">Site5 Web Hosting</a>!</p>',
+          'upad1': '<div class="ad"><p>We Guarantee Our Uptime! Switch to <a href="http://gk.site5.com/t/83/1" class="adlink">Site5 Web Hosting</a>!</p></div>',
+          'downad1': '<div class="ad"><p>Tired Of Downtime? Switch to <a href="http://gk.site5.com/t/83/2" class="adlink">Site5 Web Hosting</a>!</p></div>',
         },
         )
       )
@@ -61,9 +59,9 @@ class CheckUrlGAE(webapp.RequestHandler, CheckUrl):
       # Test over IPv6
       self.rpc_ipv6 = urlfetch.create_rpc()
       if self.urltype == URLV6LITERAL:
-        urlfetch.make_fetch_call(self.rpc_ipv6, 'http://isup.psimonkey.org.uk/?url=['+self.hostname+']', method=urlfetch.GET, follow_redirects=False)
+        urlfetch.make_fetch_call(self.rpc_ipv6, 'http://isupme.psimonkey.org.uk/?url=['+self.hostname+']', method=urlfetch.GET, follow_redirects=False)
       else:
-        urlfetch.make_fetch_call(self.rpc_ipv6, 'http://isup.psimonkey.org.uk/?url='+self.hostname, method=urlfetch.GET, follow_redirects=False)
+        urlfetch.make_fetch_call(self.rpc_ipv6, 'http://isupme.psimonkey.org.uk/?url='+self.hostname, method=urlfetch.GET, follow_redirects=False)
     if self.urltype != URLV6LITERAL:
       try:
         response = self.rpc_ipv4.get_result()

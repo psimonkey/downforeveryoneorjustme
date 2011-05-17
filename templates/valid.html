@@ -5,20 +5,22 @@
 {% block content %}
 <!-- VALID -->
 {% if up4 %}
-  <p>It's just you.  <a href="{{ display_url }}" class="url">{{ display_url }}</a> is up.</p>
+  <p>It's just you.  <a href="{{ display_url }}">{{ display_url }}</a> is up.</p>
   {% if up6 %}
     <p>Better than that they're up and working over IPv4 and IPv6!</p>
   {% else %}
     <p>Well, sort of.  They're only working over IPv4, not over IPv6.</p>
   {% endif %}
+  <p><a href="http://isoc.org/wp/worldipv6day/faq/">What is IPv6? And why should I care?</a></p>
   {{ upad1 }}
 {% else %}
-  <p>It's not just you!  <a href="{{ display_url }}" class="url">{{ display_url }}</a> looks down from here.</p>
+  <p>It's not just you!  <a href="{{ display_url }}">{{ display_url }}</a> looks down from here.</p>
   {% if up6 %}
     <p>Well sort of.  They're working fine over IPv6.</p>
   {% else %}
     <p>They're not working over IPv4 or IPv6.</p>
   {% endif %}
+  <p><a href="http://isoc.org/wp/worldipv6day/faq/">What is IPv6? And why should I care?</a></p>
   {{ downad1 }}
 {% endif %}
 {% endblock %}
