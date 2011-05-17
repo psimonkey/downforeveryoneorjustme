@@ -10,7 +10,7 @@ from checker import *
 def application(environ, start_response):
   c = CheckUrl()
   try:
-    c.check(parse_qs(environ.get('QUERY_STRING', ''))['url'][0],'v6')
+    c.check(environ['QUERY_STRING'][4:],'v6')
   except:
     c.check('')
   output = c.json() 
